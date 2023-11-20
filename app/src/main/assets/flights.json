@@ -39,6 +39,22 @@
       "departureTime": "2023-12-04T15:00:00",
       "arrivalTime": "2023-12-04T21:00:00",
       "price": 1500
+    },
+    {
+      "id": 6,
+      "origin": "Buenos Aires",
+      "destination": "Lima",
+      "departureTime": "2023-12-05T08:30:00",
+      "arrivalTime": "2023-12-05T12:30:00",
+      "price": 800
+    },
+    {
+      "id": 7,
+      "origin": "Buenos Aires",
+      "destination": "Lima",
+      "departureTime": "2023-12-06T14:00:00",
+      "arrivalTime": "2023-12-06T18:00:00",
+      "price": 900
     }
   ]
 }
