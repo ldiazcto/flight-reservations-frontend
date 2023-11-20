@@ -24,6 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".flightsapp.ProcessReservationActivity"
+            android:label="Process Reservation">
+        </activity>
+
     </application>
 
 </manifest>

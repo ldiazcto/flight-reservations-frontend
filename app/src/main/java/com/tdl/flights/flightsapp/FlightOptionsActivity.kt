@@ -1,6 +1,7 @@
 package com.tdl.flights.flightsapp
 
 import FlightList
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,8 +9,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
 import com.tdl.flights.R
 import com.google.gson.Gson
@@ -61,5 +64,17 @@ class FlightOptionsActivity : AppCompatActivity() {
         }
         llFlightOptions.addView(radioGroup)
 
+        val btnContinue = findViewById<Button>(R.id.btnContinue)
+        btnContinue.setOnClickListener {
+            // obtengo el ID del RadioButton seleccionado
+            val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+
+            if (selectedRadioButtonId == -1) {
+                Toast.makeText(this, "Selecciona un vuelo antes de continuar", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, ProcessReservationActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 }
