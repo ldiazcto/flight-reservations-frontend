@@ -1,0 +1,44 @@
+{
+  "flights": [
+    {
+      "id": 1,
+      "origin": "Buenos Aires",
+      "destination": "Río de Janeiro",
+      "departureTime": "2023-12-01T08:00:00",
+      "arrivalTime": "2023-12-01T10:00:00",
+      "price": 1000
+    },
+    {
+      "id": 2,
+      "origin": "Buenos Aires",
+      "destination": "Santiago de Chile",
+      "departureTime": "2023-12-01T09:00:00",
+      "arrivalTime": "2023-12-01T11:30:00",
+      "price": 650
+    },
+    {
+      "id": 3,
+      "origin": "Buenos Aires",
+      "destination": "Lima",
+      "departureTime": "2023-12-02T10:00:00",
+      "arrivalTime": "2023-12-02T14:00:00",
+      "price": 700
+    },
+    {
+      "id": 4,
+      "origin": "Buenos Aires",
+      "destination": "Miami",
+      "departureTime": "2023-12-03T12:00:00",
+      "arrivalTime": "2023-12-03T18:00:00",
+      "price": 2000
+    },
+    {
+      "id": 5,
+      "origin": "Buenos Aires",
+      "destination": "Barcelona",
+      "departureTime": "2023-12-04T15:00:00",
+      "arrivalTime": "2023-12-04T21:00:00",
+      "price": 1500
+    }
+  ]
+}
