@@ -3,7 +3,7 @@
     {
       "id": 1,
       "origin": "Buenos Aires",
-      "destination": "Río de Janeiro",
+      "destination": "Rio de Janeiro",
       "departureTime": "2023-12-01T08:00:00",
       "arrivalTime": "2023-12-01T10:00:00",
       "price": 1000
