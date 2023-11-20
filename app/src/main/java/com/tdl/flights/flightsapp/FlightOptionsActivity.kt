@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.util.Log
-import androidx.core.content.ContextCompat
+import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
 import com.tdl.flights.R
 import com.google.gson.Gson
@@ -43,16 +45,21 @@ class FlightOptionsActivity : AppCompatActivity() {
         val filteredFlights = flightList.flights.filter { flight ->
             flight.origin == origen && flight.destination == destino
         }
+        val radioGroup = RadioGroup(this)
 
         for (flight in filteredFlights) {
-            val textView = TextView(this)
+            val radioButton = RadioButton(this)
             if (Build.VERSION.SDK_INT < 23) {
-                textView.setTextAppearance(this, R.style.FlightOptionTextStyle)
+                radioButton.setTextAppearance(this, R.style.FlightOptionTextStyle)
             } else {
-                textView.setTextAppearance(R.style.FlightOptionTextStyle)
+                radioButton.setTextAppearance(R.style.FlightOptionTextStyle)
             }
-            textView.text = "Vuelo ${flight.id}: Salida ${flight.departureTime}, Llegada ${flight.arrivalTime}, Precio ${flight.price}"
-            llFlightOptions.addView(textView)
+            radioButton.text = "Vuelo ${flight.id}: Salida ${flight.departureTime}, Llegada ${flight.arrivalTime}, Precio ${flight.price}"
+
+            radioButton.id = View.generateViewId()
+            radioGroup.addView(radioButton)
         }
+        llFlightOptions.addView(radioGroup)
+
     }
 }
