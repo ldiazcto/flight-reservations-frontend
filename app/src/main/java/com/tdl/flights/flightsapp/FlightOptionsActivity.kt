@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import android.text.TextUtils
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.util.Log
@@ -57,9 +59,20 @@ class FlightOptionsActivity : AppCompatActivity() {
             } else {
                 radioButton.setTextAppearance(R.style.FlightOptionTextStyle)
             }
-            radioButton.text = "Vuelo ${flight.id}: Salida ${flight.departureTime}, Llegada ${flight.arrivalTime}, Precio ${flight.price}"
 
+            val flightInfoText = "<b>Vuelo ${flight.id}:</b><br/>" +
+                    "<small>Salida ${flight.departureTime}, Llegada ${flight.arrivalTime}, Precio ${flight.price}</small>"
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                radioButton.text = Html.fromHtml(flightInfoText, Html.FROM_HTML_MODE_COMPACT)
+            } else {
+                @Suppress("DEPRECATION")
+                radioButton.text = Html.fromHtml(flightInfoText)
+            }
             radioButton.id = View.generateViewId()
+
+            radioButton.maxLines = 4  // Número máximo de líneas a mostrar
+            radioButton.ellipsize = TextUtils.TruncateAt.END
             radioGroup.addView(radioButton)
         }
         llFlightOptions.addView(radioGroup)
