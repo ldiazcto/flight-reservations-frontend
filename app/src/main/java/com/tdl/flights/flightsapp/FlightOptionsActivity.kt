@@ -59,9 +59,8 @@ class FlightOptionsActivity : AppCompatActivity() {
             } else {
                 radioButton.setTextAppearance(R.style.FlightOptionTextStyle)
             }
-
-            val flightInfoText = "<b>Vuelo ${flight.id}:</b><br/>" +
-                    "<small>Salida ${flight.departureTime}, Llegada ${flight.arrivalTime}, Precio ${flight.price}</small>"
+            val flightInfoText = "<b>Vuelo ${flight.id} (${flight.airline}):</b><br/>" +
+                    "<small>Salida: ${flight.departureTime}<br/>Llegada: ${flight.arrivalTime}<br/>Precio: ${flight.price}</small>"
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 radioButton.text = Html.fromHtml(flightInfoText, Html.FROM_HTML_MODE_COMPACT)
