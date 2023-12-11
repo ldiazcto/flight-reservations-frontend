@@ -3,26 +3,53 @@ package com.tdl.flights.flightsapp
 import FlightList
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.text.TextUtils
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
-import com.tdl.flights.R
 import com.google.gson.Gson
+import com.tdl.flights.R
+import com.tdl.flights.flightsapp.RetrofitClient.client
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.IOException
+
 
 class FlightOptionsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val apiService = client!!.create(MyApiService::class.java)
+        val call: Call<FlightDTO?>? = apiService.myData
+        var myData: FlightDTO
+
+        call!!.enqueue(object : Callback<FlightDTO?> {
+            override fun onResponse(call: Call<FlightDTO?>?, response: Response<FlightDTO?>) {
+                if (response.isSuccessful) {
+                    myData = response.body()!!
+                    println(myData)
+                } else {
+                    // Manejar el error de la solicitud
+                }
+            }
+
+            override fun onFailure(call: Call<FlightDTO?>?, t: Throwable?) {
+                // Manejar el fallo de la solicitud
+            }
+        })
+
+
+
         setContentView(R.layout.activity_flight_options)
         val tvTitle = findViewById<TextView>(R.id.tvTitle)
         val llFlightOptions = findViewById<LinearLayout>(R.id.llFlightOptions)
@@ -31,6 +58,9 @@ class FlightOptionsActivity : AppCompatActivity() {
         val origen: String= intent.extras?.getString("EXTRA_ORIGEN").orEmpty()//le aviso que es un string
         val destino: String= intent.extras?.getString("EXTRA_DESTINO").orEmpty()
         tvTitle.text = "Vuelos desde $origen hacia $destino"
+
+
+
 
         val json: String = try {
             assets.open("flights.json").use {
@@ -50,6 +80,10 @@ class FlightOptionsActivity : AppCompatActivity() {
         val filteredFlights = flightList.flights.filter { flight ->
             flight.origin == origen && flight.destination == destino
         }
+
+
+
+
         val radioGroup = RadioGroup(this)
 
         for (flight in filteredFlights) {
