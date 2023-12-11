@@ -77,6 +77,7 @@ class FlightOptionsActivity : AppCompatActivity() {
         llFlightOptions.addView(radioGroup)
 
         val btnContinue = findViewById<Button>(R.id.btnContinue)
+
         btnContinue.setOnClickListener {
             // obtengo el ID del RadioButton seleccionado
             val selectedRadioButtonId = radioGroup.checkedRadioButtonId
