@@ -8,23 +8,19 @@ import java.time.ZonedDateTime
 
 data class FlightDTO(
     val id: String,
-    val airline: AirlineCode,
-    val type: FlightType,
-    val originAirport: AirportCode,
+    val airline: String,
+    val type: String,
+    val originAirport: String,
     val originCity: String,
-    val originState: StateCode,
-    val originCountry: CountryCode,
-    val destinationAirport: AirportCode,
+    val originState: String,
+    val originCountry: String,
+    val destinationAirport: String,
     val destinationCity: String,
-    val destinationState: StateCode,
-    val destinationCountry: CountryCode,
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_RFC3339_PATTERN, timezone = ARGENTINE_TIME_ZONE)
-    val plannedDepartureTime: ZonedDateTime,
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_RFC3339_PATTERN, timezone = ARGENTINE_TIME_ZONE)
-    val realDepartureTime: ZonedDateTime,
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_RFC3339_PATTERN, timezone = ARGENTINE_TIME_ZONE)
-    val plannedArrivalTime: ZonedDateTime,
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DATETIME_RFC3339_PATTERN, timezone = ARGENTINE_TIME_ZONE)
-    val realArrivalTime: ZonedDateTime,
-    val price: BigDecimal
+    val destinationState: String,
+    val destinationCountry: String,
+    val plannedDepartureTime: String,
+    val realDepartureTime: String,
+    val plannedArrivalTime: String,
+    val realArrivalTime: String,
+    val price: String
 )

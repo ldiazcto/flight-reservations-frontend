@@ -30,23 +30,30 @@ class FlightOptionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val apiService = client!!.create(MyApiService::class.java)
-        val call: Call<FlightDTO?>? = apiService.myData
-        var myData: FlightDTO
+        val call: Call<List<FlightDTO>?>? = apiService.myData
+        var myData: List<FlightDTO>?
+        println("URL de la API: ${call?.request()?.url()}")
 
-        call!!.enqueue(object : Callback<FlightDTO?> {
-            override fun onResponse(call: Call<FlightDTO?>?, response: Response<FlightDTO?>) {
+        call!!.enqueue(object : Callback<List<FlightDTO>?> {
+            override fun onResponse(call: Call<List<FlightDTO>?>?, response: Response<List<FlightDTO>?>) {
+            println("llamada al call enqueue ------HOLAAAAAA ")
                 if (response.isSuccessful) {
                     myData = response.body()!!
-                    println(myData)
+
+                    // Imprimir la respuesta del servidor
+                    println("Respuesta del servidor: $myData")
+
+                    // Actualizar la interfaz de usuario con los datos recibidos
                 } else {
                     // Manejar el error de la solicitud
                 }
             }
 
-            override fun onFailure(call: Call<FlightDTO?>?, t: Throwable?) {
-                // Manejar el fallo de la solicitud
+            override fun onFailure(call: Call<List<FlightDTO>?>?, t: Throwable?) {
+                println("Fallo en la llamada al servidor: ${t?.message}")
             }
         })
+
 
 
 
