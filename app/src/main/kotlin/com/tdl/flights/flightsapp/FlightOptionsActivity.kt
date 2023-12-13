@@ -14,11 +14,11 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.reflect.TypeToken
-import com.google.gson.Gson
 import com.tdl.flights.R
-import com.tdl.flights.flightsapp.RetrofitClient.client
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import com.tdl.flights.flightsapp.api.RetrofitClient
+import com.tdl.flights.flightsapp.models.response.ReservationDTO
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -67,7 +67,25 @@ class FlightOptionsActivity : AppCompatActivity() {
         tvTitle.text = "Vuelos desde $origen hacia $destino"
 
 
+        val reservationId = "HJNZAC"
 
+        val flightReservationsApi = RetrofitClient.flightReservationsApi
+        val call = flightReservationsApi.getReservation(reservationId)
+
+        call.enqueue(object : Callback<ReservationDTO> {
+            override fun onResponse(call: Call<ReservationDTO>, response: Response<ReservationDTO>) {
+                if (response.isSuccessful) {
+                    val reservation = response.body()
+                    println(reservation)
+                } else {
+                    println("Error")
+                }
+            }
+
+            override fun onFailure(call: Call<ReservationDTO>, t: Throwable) {
+                println("On failure error")
+            }
+        })
 
         val json: String = try {
             assets.open("flights.json").use {
