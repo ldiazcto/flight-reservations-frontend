@@ -18,13 +18,13 @@
         app:layout_constraintBottom_toTopOf="@id/etNombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.477" />
+        app:layout_constraintVertical_bias="0.681" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etNombre"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="560dp"
+        android:layout_marginBottom="500dp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/btnEnd"
@@ -43,13 +43,13 @@
         app:layout_constraintBottom_toTopOf="@id/etApellido"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.818" />
+        app:layout_constraintVertical_bias="0.912" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etApellido"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="420dp"
+        android:layout_marginBottom="372dp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/btnEnd"
@@ -74,7 +74,7 @@
         android:id="@+id/etDNI"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="256dp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/btnEnd"
@@ -99,7 +99,7 @@
         android:id="@+id/etEmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/btnEnd"
@@ -124,7 +124,7 @@
         android:id="@+id/etTelefono"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="132dp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/btnEnd"
