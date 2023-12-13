@@ -3,16 +3,17 @@ package com.tdl.flights.flightsapp
 import FlightList
 import android.content.Intent
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.text.TextUtils
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
 import android.widget.Toast
 import com.tdl.flights.R
 import com.google.gson.Gson
@@ -24,39 +25,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 
-
 class FlightOptionsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val apiService = client!!.create(MyApiService::class.java)
-        val call: Call<List<FlightDTO>?>? = apiService.myData
-        var myData: List<FlightDTO>?
-        println("URL de la API: ${call?.request()?.url()}")
-
-        call!!.enqueue(object : Callback<List<FlightDTO>?> {
-            override fun onResponse(call: Call<List<FlightDTO>?>?, response: Response<List<FlightDTO>?>) {
-            println("llamada al call enqueue ------HOLAAAAAA ")
-                if (response.isSuccessful) {
-                    myData = response.body()!!
-
-                    // Imprimir la respuesta del servidor
-                    println("Respuesta del servidor: $myData")
-
-                    // Actualizar la interfaz de usuario con los datos recibidos
-                } else {
-                    // Manejar el error de la solicitud
-                }
-            }
-
-            override fun onFailure(call: Call<List<FlightDTO>?>?, t: Throwable?) {
-                println("Fallo en la llamada al servidor: ${t?.message}")
-            }
-        })
-
-
-
-
         setContentView(R.layout.activity_flight_options)
         val tvTitle = findViewById<TextView>(R.id.tvTitle)
         val llFlightOptions = findViewById<LinearLayout>(R.id.llFlightOptions)
@@ -87,6 +58,7 @@ class FlightOptionsActivity : AppCompatActivity() {
             }
         })
 
+
         val json: String = try {
             assets.open("flights.json").use {
                 it.bufferedReader().use { reader ->
@@ -105,10 +77,6 @@ class FlightOptionsActivity : AppCompatActivity() {
         val filteredFlights = flightList.flights.filter { flight ->
             flight.origin == origen && flight.destination == destino
         }
-
-
-
-
         val radioGroup = RadioGroup(this)
 
         for (flight in filteredFlights) {
