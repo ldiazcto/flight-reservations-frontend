@@ -40,7 +40,7 @@ class FlightOptionsActivity : AppCompatActivity() {
 
         val reservationId = "HJNZAC"
 
-        val flightReservationsApi = RetrofitClient.flightReservationsApi
+        val flightReservationsApi = RetrofitClient.flightReservationsClient
         val call = flightReservationsApi.getReservation(reservationId)
 
         call.enqueue(object : Callback<ReservationDTO> {

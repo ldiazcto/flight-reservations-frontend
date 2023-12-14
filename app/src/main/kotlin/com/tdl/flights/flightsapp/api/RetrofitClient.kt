@@ -1,5 +1,6 @@
 package com.tdl.flights.flightsapp.api
 
+import com.tdl.flights.flightsapp.api.service.FlightReservationsClient
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,5 +19,5 @@ object RetrofitClient {
         .client(client)
         .build()
 
-    val flightReservationsApi: FlightReservationsApi = retrofit.create(FlightReservationsApi::class.java)
+    val flightReservationsClient: FlightReservationsClient = retrofit.create(FlightReservationsClient::class.java)
 }
