@@ -1,4 +1,4 @@
-package com.tdl.flights.flightsapp
+package com.tdl.flights.flightsapp.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
