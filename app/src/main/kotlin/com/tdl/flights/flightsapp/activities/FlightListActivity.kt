@@ -10,12 +10,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.tdl.flights.R
 import com.tdl.flights.flightsapp.adapters.FlightAdapter
 import com.tdl.flights.flightsapp.api.RetrofitClient
+import com.tdl.flights.flightsapp.listeners.ItemClickListener
 import com.tdl.flights.flightsapp.models.response.FlightSearchListDTO
 import retrofit2.Call
 import retrofit2.Response
 
+
 class FlightListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
+    private lateinit var itemClickListener: ItemClickListener
+    private lateinit var flightAdapter: FlightAdapter
     private lateinit var floatingActionButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +30,18 @@ class FlightListActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.flightList_recyclerView)
         floatingActionButton = findViewById(R.id.flightList_fab)
+
+        itemClickListener = object : ItemClickListener {
+            override fun onClick(s: String) {
+                recyclerView.post { flightAdapter.notifyDataSetChanged() }
+                Toast.makeText(
+                    applicationContext,
+                    "Selected : $s",
+                    Toast.LENGTH_SHORT
+                )
+                .show()
+            }
+        }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         floatingActionButton.setOnClickListener { _ ->
@@ -60,7 +76,7 @@ class FlightListActivity : AppCompatActivity() {
     }
 
     private fun populateListView(flights: FlightSearchListDTO) {
-        val flightAdapter = FlightAdapter(flights)
+        flightAdapter = FlightAdapter(flights, itemClickListener)
 
         recyclerView.adapter = flightAdapter
     }

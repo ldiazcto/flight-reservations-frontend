@@ -1,6 +1,7 @@
 package com.tdl.flights.flightsapp.adapters
 
 import android.view.View
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tdl.flights.R
@@ -8,6 +9,7 @@ import com.tdl.flights.R
 class FlightHolder(
     itemView: View
 ) : RecyclerView.ViewHolder(itemView) {
+    var radioButton: RadioButton
     var airline: TextView
     var origin: TextView
     var departureTime: TextView
@@ -16,6 +18,7 @@ class FlightHolder(
     var price: TextView
 
     init {
+        radioButton = itemView.findViewById(R.id.flightListItem_radioButton)
         airline = itemView.findViewById(R.id.flightListItem_airline)
         origin = itemView.findViewById(R.id.flightListItem_origin)
         departureTime = itemView.findViewById(R.id.flightListItem_departureTime)
