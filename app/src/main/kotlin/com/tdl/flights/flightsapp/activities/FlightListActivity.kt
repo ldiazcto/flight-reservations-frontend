@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -12,8 +13,10 @@ import com.tdl.flights.flightsapp.adapters.FlightAdapter
 import com.tdl.flights.flightsapp.api.RetrofitClient
 import com.tdl.flights.flightsapp.listeners.ItemClickListener
 import com.tdl.flights.flightsapp.models.response.FlightSearchListDTO
+import com.tdl.flights.flightsapp.utils.Constants
 import retrofit2.Call
 import retrofit2.Response
+import java.text.SimpleDateFormat
 
 
 class FlightListActivity : AppCompatActivity() {
@@ -55,7 +58,7 @@ class FlightListActivity : AppCompatActivity() {
         val destination = intent.extras?.getString("EXTRA_DESTINATION").orEmpty()
         val from = intent.extras?.getString("EXTRA_FROM").orEmpty()
         val to = intent.extras?.getString("EXTRA_TO").orEmpty()
-
+        var flightSelected: FlightSearchListDTO
         val flightReservationsApi = RetrofitClient.flightReservationsClient
         val call = flightReservationsApi.getFlights(
             origin = origin,
@@ -66,6 +69,7 @@ class FlightListActivity : AppCompatActivity() {
 
         call.enqueue(object : retrofit2.Callback<FlightSearchListDTO> {
             override fun onResponse(call: Call<FlightSearchListDTO>, response: Response<FlightSearchListDTO>) {
+                flightSelected = response.body()!!
                 populateListView(response.body()!!)
             }
 
@@ -73,6 +77,20 @@ class FlightListActivity : AppCompatActivity() {
                 Toast.makeText(this@FlightListActivity, "Error al cargar los vuelos", Toast.LENGTH_SHORT).show()
             }
         })
+
+        var btnFlightSelected: AppCompatButton
+
+        btnFlightSelected = findViewById(R.id.btnFlightSelected)
+
+        btnFlightSelected.setOnClickListener {
+            val flightSelectedToSend = btnFlightSelected.text.toString()
+            if (flightSelectedToSend.isNotEmpty()) {
+                val intent = Intent(this, ProcessReservationActivity::class.java)
+
+                intent.putExtra("FLIGHT_SELECTED", flightSelectedToSend)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun populateListView(flights: FlightSearchListDTO) {
