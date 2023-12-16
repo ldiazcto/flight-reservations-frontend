@@ -1,5 +1,7 @@
 package com.tdl.flights.flightsapp.models.response
 
+import java.io.Serializable
+
 data class FlightSearchListDTO(
     val flights: List<FlightSearchDTO>
 ) {

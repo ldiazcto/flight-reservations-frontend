@@ -7,48 +7,50 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.gson.Gson
 import com.tdl.flights.R
 import com.tdl.flights.flightsapp.adapters.FlightAdapter
 import com.tdl.flights.flightsapp.api.RetrofitClient
-import com.tdl.flights.flightsapp.listeners.ItemClickListener
+import com.tdl.flights.flightsapp.listeners.OnCheckedChangeListener
+import com.tdl.flights.flightsapp.models.entity.FlightSearch
 import com.tdl.flights.flightsapp.models.response.FlightSearchListDTO
-import com.tdl.flights.flightsapp.utils.Constants
+import com.tdl.flights.flightsapp.models.response.FlightSearchListDTO.FlightSearchDTO
 import retrofit2.Call
 import retrofit2.Response
-import java.text.SimpleDateFormat
-
 
 class FlightListActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
-    private lateinit var itemClickListener: ItemClickListener
+    private lateinit var onCheckedChangeListener: OnCheckedChangeListener
     private lateinit var flightAdapter: FlightAdapter
-    private lateinit var floatingActionButton: FloatingActionButton
+    private lateinit var flightSelectedButton: AppCompatButton
+    private lateinit var flightSearch: FlightSearchListDTO
+    private lateinit var selectedFlight: FlightSearchDTO
+    private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flight_list)
 
-        // tvTitle.text = "Vuelos desde $origin hacia $destination"
-
         recyclerView = findViewById(R.id.flightList_recyclerView)
-        floatingActionButton = findViewById(R.id.flightList_fab)
+        flightSelectedButton = findViewById(R.id.btnFlightSelected)
 
-        itemClickListener = object : ItemClickListener {
-            override fun onClick(s: String) {
+        onCheckedChangeListener = object : OnCheckedChangeListener {
+            override fun onRadioButtonChanged(position: Int) {
                 recyclerView.post { flightAdapter.notifyDataSetChanged() }
-                Toast.makeText(
-                    applicationContext,
-                    "Selected : $s",
-                    Toast.LENGTH_SHORT
-                )
-                .show()
+
+                if (position != -1) {
+                    selectedFlight = flightSearch.flights[position]
+                }
             }
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        floatingActionButton.setOnClickListener { _ ->
+
+        flightSelectedButton.setOnClickListener { _ ->
             val intent = Intent(this, ProcessReservationActivity::class.java)
+
+            intent.putExtra("EXTRA_SELECTED_FLIGHT", gson.toJson(selectedFlight))
+
             startActivity(intent)
         }
     }
@@ -58,7 +60,6 @@ class FlightListActivity : AppCompatActivity() {
         val destination = intent.extras?.getString("EXTRA_DESTINATION").orEmpty()
         val from = intent.extras?.getString("EXTRA_FROM").orEmpty()
         val to = intent.extras?.getString("EXTRA_TO").orEmpty()
-        var flightSelected: FlightSearchListDTO
         val flightReservationsApi = RetrofitClient.flightReservationsClient
         val call = flightReservationsApi.getFlights(
             origin = origin,
@@ -69,32 +70,20 @@ class FlightListActivity : AppCompatActivity() {
 
         call.enqueue(object : retrofit2.Callback<FlightSearchListDTO> {
             override fun onResponse(call: Call<FlightSearchListDTO>, response: Response<FlightSearchListDTO>) {
-                flightSelected = response.body()!!
-                populateListView(response.body()!!)
+                flightSearch = response.body()!!
+                populateListView(
+                    flightSearch.flights.map { FlightSearch(it) }
+                )
             }
 
             override fun onFailure(call: Call<FlightSearchListDTO>, t: Throwable) {
                 Toast.makeText(this@FlightListActivity, "Error al cargar los vuelos", Toast.LENGTH_SHORT).show()
             }
         })
-
-        var btnFlightSelected: AppCompatButton
-
-        btnFlightSelected = findViewById(R.id.btnFlightSelected)
-
-        btnFlightSelected.setOnClickListener {
-            val flightSelectedToSend = btnFlightSelected.text.toString()
-            if (flightSelectedToSend.isNotEmpty()) {
-                val intent = Intent(this, ProcessReservationActivity::class.java)
-
-                intent.putExtra("FLIGHT_SELECTED", flightSelectedToSend)
-                startActivity(intent)
-            }
-        }
     }
 
-    private fun populateListView(flights: FlightSearchListDTO) {
-        flightAdapter = FlightAdapter(flights, itemClickListener)
+    private fun populateListView(flights: List<FlightSearch>) {
+        flightAdapter = FlightAdapter(flights, onCheckedChangeListener)
 
         recyclerView.adapter = flightAdapter
     }

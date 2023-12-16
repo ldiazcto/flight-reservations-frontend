@@ -15,6 +15,7 @@ class FlightHolder(
     var departureTime: TextView
     var destination: TextView
     var arrivalTime: TextView
+    var flightDate: TextView
     var price: TextView
 
     init {
@@ -24,6 +25,7 @@ class FlightHolder(
         departureTime = itemView.findViewById(R.id.flightListItem_departureTime)
         destination = itemView.findViewById(R.id.flightListItem_destination)
         arrivalTime = itemView.findViewById(R.id.flightListItem_arrivalTime)
+        flightDate = itemView.findViewById(R.id.flightListItem_flightDate)
         price = itemView.findViewById(R.id.flightListItem_price)
     }
 }

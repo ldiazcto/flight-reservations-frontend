@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
+import com.google.gson.Gson
 import com.tdl.flights.R
+import com.tdl.flights.flightsapp.models.response.FlightSearchListDTO.FlightSearchDTO
 
 class ProcessReservationActivity : AppCompatActivity() {
+    private val gson = Gson()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_process_reservation)
@@ -15,6 +18,11 @@ class ProcessReservationActivity : AppCompatActivity() {
         val etNombre = findViewById<AppCompatEditText>(R.id.etNombre) //para el id de mi editText(donde ingreo el valor)
         val etApellido = findViewById<AppCompatEditText>(R.id.etApellido)
         val etDNI = findViewById<AppCompatEditText>(R.id.etDNI)
+
+        val selectedFlight = gson.fromJson(
+            intent.extras?.getString("EXTRA_SELECTED_FLIGHT").orEmpty(),
+            FlightSearchDTO::class.java
+        )
 
         btnEnd.setOnClickListener{//lo que quiero hacer cuando se pulse el boton
             val nombre = etNombre.text.toString()

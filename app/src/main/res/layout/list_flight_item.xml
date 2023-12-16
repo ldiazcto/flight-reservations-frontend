@@ -11,19 +11,31 @@
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/flightListItem_airline"
+        app:layout_constraintTop_toBottomOf="@id/flightListItem_flightLeg"
+    />
+
+    <TextView
+        android:id="@+id/flightListItem_flightLeg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:text="Ida"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
     />
 
     <TextView
         android:id="@+id/flightListItem_airline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="40dp"
         android:text="Airline"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flightListItem_flightLeg"
     />
 
     <TextView
@@ -81,14 +93,28 @@
     />
 
     <TextView
+        android:id="@+id/flightListItem_flightDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Flight date"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <TextView
         android:id="@+id/flightListItem_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
         android:text="Price"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+    />
 
     <View
         android:layout_width="match_parent"
