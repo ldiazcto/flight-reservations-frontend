@@ -107,7 +107,7 @@ class ProcessReservationActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ReservationDTO>, response: Response<ReservationDTO>) {
                 createdReservation = response.body()!!
 
-                val intent = Intent(this@ProcessReservationActivity, SearchFlightsActivity::class.java)
+                val intent = Intent(this@ProcessReservationActivity, ShowReservationActivity::class.java)
 
                 intent.putExtra("EXTRA_CREATED_RESERVATION", gson.toJson(createdReservation))
 
