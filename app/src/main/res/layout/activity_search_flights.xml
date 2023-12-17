@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".flightsapp.SearchFlightsActivity">
-
+    tools:context=".flightsapp.activities.SearchFlightsActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,22 +15,24 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/etOrigen"
+        app:layout_constraintBottom_toTopOf="@id/etOrigin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.405"
+    />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etOrigen"
+        android:id="@+id/etOrigin"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="296dp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnStart"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearchFlights"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+    />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,24 +42,24 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/etDestino"
+        app:layout_constraintBottom_toTopOf="@id/etDestination"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.829" />
-
+        app:layout_constraintVertical_bias="0.829"
+    />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etDestino"
+        android:id="@+id/etDestination"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="152dp"
         android:maxLines="1"
         android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnStart"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearchFlights"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+    />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,26 +69,26 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/etDate"
+        app:layout_constraintBottom_toTopOf="@id/etFromDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.937"
+    />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/etDate"
+        android:id="@+id/etFromDate"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:hint="Selecciona la fecha"
-        app:layout_constraintBottom_toTopOf="@+id/btnStart"
+        app:layout_constraintBottom_toTopOf="@+id/btnSearchFlights"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
-
-        />
+    />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnStart"
+        android:id="@+id/btnSearchFlights"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/purple_200"
@@ -96,6 +97,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintVertical_bias="0.638"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
