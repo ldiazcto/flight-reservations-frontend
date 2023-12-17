@@ -35,7 +35,11 @@
             android:name=".flightsapp.activities.ProcessReservationActivity"
             android:label="Proceso de reserva">
         </activity>
-
+        <activity
+            android:name=".flightsapp.activities.ShowReservationActivity"
+            android:exported="true"
+            android:label="Show Reservation Activity">
+        </activity>
     </application>
 
 </manifest>
