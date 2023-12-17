@@ -17,7 +17,6 @@ class FlightAdapter(
     private val flightSearch: List<FlightSearch>,
     private val onCheckedChangeListener: OnCheckedChangeListener
 ) : RecyclerView.Adapter<FlightHolder>() {
-
     private var selectedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlightHolder {
