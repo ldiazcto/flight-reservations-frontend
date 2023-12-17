@@ -42,7 +42,7 @@ class FlightAdapter(
 
         holder.origin.text = flight.originAirport.type
         holder.departureTime.text = flight.plannedDepartureTime.formatToString(HOUR_WITHOUT_SECONDS)
-        holder.durationTime.text = "$hoursPart h $minutesPart m"
+        holder.durationTime.text = "Duración: $hoursPart h $minutesPart m"
         holder.destination.text = flight.destinationAirport.type
         holder.arrivalTime.text = flight.plannedArrivalTime.formatToString(HOUR_WITHOUT_SECONDS)
         holder.flightDate.text = flight.plannedArrivalTime.formatToString(DATE_WITH_DOTS_PATTERN)
