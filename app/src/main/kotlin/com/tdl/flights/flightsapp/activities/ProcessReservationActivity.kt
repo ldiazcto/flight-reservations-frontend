@@ -1,7 +1,6 @@
 package com.tdl.flights.flightsapp.activities
 
 import android.content.Intent
-import android.icu.math.BigDecimal.ROUND_HALF_EVEN
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +15,6 @@ import com.tdl.flights.flightsapp.models.enums.PhoneType
 import com.tdl.flights.flightsapp.models.request.CreateReservationDTO
 import com.tdl.flights.flightsapp.models.response.CustomerDTO
 import com.tdl.flights.flightsapp.models.response.DocumentDTO
-import com.tdl.flights.flightsapp.models.response.FlightSearchListDTO
 import com.tdl.flights.flightsapp.models.response.FlightSearchListDTO.FlightSearchDTO
 import com.tdl.flights.flightsapp.models.response.PhoneDTO
 import com.tdl.flights.flightsapp.models.response.ReservationDTO
@@ -41,12 +39,12 @@ class ProcessReservationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_process_reservation)
 
-        etFirstName = findViewById<AppCompatEditText>(R.id.etFirstName)
-        etLastName = findViewById<AppCompatEditText>(R.id.etLastName)
-        etDocumentNumber = findViewById<AppCompatEditText>(R.id.etDocumentNumber)
-        etPhoneNumber = findViewById<AppCompatEditText>(R.id.etPhoneNumber)
-        etEmail = findViewById<AppCompatEditText>(R.id.etEmail)
-        btnEndReservation = findViewById<AppCompatButton>(R.id.btnEndReservation)
+        etFirstName = findViewById(R.id.etFirstName)
+        etLastName = findViewById(R.id.etLastName)
+        etDocumentNumber = findViewById(R.id.etDocumentNumber)
+        etPhoneNumber = findViewById(R.id.etPhoneNumber)
+        etEmail = findViewById(R.id.etEmail)
+        btnEndReservation = findViewById(R.id.btnEndReservation)
 
         val selectedFlight = FlightSearch(
             gson.fromJson(
@@ -63,7 +61,7 @@ class ProcessReservationActivity : AppCompatActivity() {
             val email = etEmail.text.toString()
 
             val isValid = firstName.isNotEmpty() && lastName.isNotEmpty() && documentNumber.isNotEmpty() &&
-                    phoneNumber.isNotEmpty() && email.isNotEmpty()
+                phoneNumber.isNotEmpty() && email.isNotEmpty()
 
             if (isValid) {
                 val passengersQuantity = BigInteger.ONE.toInt()
