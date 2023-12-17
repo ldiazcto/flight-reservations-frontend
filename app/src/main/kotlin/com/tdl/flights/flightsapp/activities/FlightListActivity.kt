@@ -60,6 +60,7 @@ class FlightListActivity : AppCompatActivity() {
         val destination = intent.extras?.getString("EXTRA_DESTINATION").orEmpty()
         val from = intent.extras?.getString("EXTRA_FROM").orEmpty()
         val to = intent.extras?.getString("EXTRA_TO").orEmpty()
+
         val flightReservationsApi = RetrofitClient.flightReservationsClient
         val call = flightReservationsApi.getFlights(
             origin = origin,
