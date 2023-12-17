@@ -18,6 +18,9 @@ class ProcessReservationActivity : AppCompatActivity() {
         val etNombre = findViewById<AppCompatEditText>(R.id.etNombre) //para el id de mi editText(donde ingreo el valor)
         val etApellido = findViewById<AppCompatEditText>(R.id.etApellido)
         val etDNI = findViewById<AppCompatEditText>(R.id.etDNI)
+        //val etTipoDocumento = findViewById<AppCompatEditText>(R.id.etTipoDocumtno)
+        //val etCodArea = findViewById<AppCompatEditText>(R.id.etCodArea)
+        //val etTipoTelefono = findViewById<AppCompatEditText>(R.id.etTipoTelefono)
 
         val selectedFlight = gson.fromJson(
             intent.extras?.getString("EXTRA_SELECTED_FLIGHT").orEmpty(),
