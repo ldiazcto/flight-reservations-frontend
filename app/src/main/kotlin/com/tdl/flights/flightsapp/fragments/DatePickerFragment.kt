@@ -6,7 +6,8 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
-import java.util.Calendar
+import com.tdl.flights.R
+import java.util.*
 
 class DatePickerFragment(
     val listener: (day: Int, month: Int, year: Int) -> Unit
@@ -21,6 +22,6 @@ class DatePickerFragment(
         val month: Int = calendar.get(Calendar.MONTH)
         val year: Int = calendar.get(Calendar.YEAR)
 
-        return DatePickerDialog(activity as Context, this, year, month, day)
+        return DatePickerDialog(activity as Context, R.style.datePickerTheme, this, year, month, day)
     }
 }
