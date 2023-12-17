@@ -13,6 +13,7 @@ class FlightHolder(
     var airline: TextView
     var origin: TextView
     var departureTime: TextView
+    var durationTime: TextView
     var destination: TextView
     var arrivalTime: TextView
     var flightDate: TextView
@@ -23,6 +24,7 @@ class FlightHolder(
         airline = itemView.findViewById(R.id.flightListItem_airline)
         origin = itemView.findViewById(R.id.flightListItem_origin)
         departureTime = itemView.findViewById(R.id.flightListItem_departureTime)
+        durationTime = itemView.findViewById(R.id.flightListItem_durationTime)
         destination = itemView.findViewById(R.id.flightListItem_destination)
         arrivalTime = itemView.findViewById(R.id.flightListItem_arrivalTime)
         flightDate = itemView.findViewById(R.id.flightListItem_flightDate)
