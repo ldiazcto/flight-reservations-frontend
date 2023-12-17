@@ -6,6 +6,7 @@ import com.tdl.flights.flightsapp.models.response.FlightSearchListDTO
 import com.tdl.flights.flightsapp.models.response.ReservationDTO
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -37,8 +38,8 @@ interface FlightReservationsClient {
         @Body body: UpdateReservationDTO
     ): Call<ReservationDTO>
 
-    @GET("/api/reservations/{id}")
+    @DELETE("/api/reservations/{id}")
     fun deleteReservation(
         @Path("id") id: String
-    ): Call<ReservationDTO>
+    ): Call<Void>
 }
