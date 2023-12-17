@@ -23,6 +23,11 @@ interface FlightReservationsClient {
         @Query("to") to: String,
     ): Call<FlightSearchListDTO>
 
+    @GET("/api/flights/{id}")
+    fun getFlight(
+        @Path("id") id: String
+    ): Call<FlightSearchListDTO.FlightSearchDTO>
+
     @GET("/api/reservations/{id}")
     fun getReservation(
         @Path("id") id: String
