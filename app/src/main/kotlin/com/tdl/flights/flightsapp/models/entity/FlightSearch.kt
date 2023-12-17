@@ -23,7 +23,7 @@ data class FlightSearch(
         airline = AirlineCode.fromValue(entity.airline)!!,
         originAirport = AirportCode.fromValue(entity.originAirport)!!,
         destinationAirport = AirportCode.fromValue(entity.destinationAirport)!!,
-        plannedDepartureTime = entity.plannedArrivalTime.toDateFromPatternWithHours(DATETIME_RFC3339_PATTERN)!!,
+        plannedDepartureTime = entity.plannedDepartureTime.toDateFromPatternWithHours(DATETIME_RFC3339_PATTERN)!!,
         plannedArrivalTime = entity.plannedArrivalTime.toDateFromPatternWithHours(DATETIME_RFC3339_PATTERN)!!,
         price = entity.price.toBigDecimal()
     )
