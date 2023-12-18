@@ -10,94 +10,91 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Origen:"
-        android:textColor="@color/black"
+        android:layout_marginStart="52dp"
+        android:text="Origen"
+        android:textColor="@color/gray"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/etOrigin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405"
-    />
+        app:layout_constraintVertical_bias="0.831" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etOrigin"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="296dp"
+        android:layout_marginBottom="392dp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/btnSearchFlights"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-    />
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Destino:"
-        android:textColor="@color/black"
+        android:layout_marginStart="52dp"
+        android:text="Destino"
+        android:textColor="@color/gray"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/etDestination"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.829"
-    />
+        app:layout_constraintVertical_bias="0.934" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etDestination"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="236dp"
         android:maxLines="1"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/btnSearchFlights"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-    />
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Fecha de ida:"
-        android:textColor="@color/black"
+        android:layout_marginStart="52dp"
+        android:text="Fecha de ida"
+        android:textColor="@color/gray"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/etFromDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937"
-    />
+        app:layout_constraintVertical_bias="0.95"
+        android:elevation="4dp"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etFromDate"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="84dp"
         android:hint="Selecciona la fecha"
         app:layout_constraintBottom_toTopOf="@+id/btnSearchFlights"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-    />
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSearchFlights"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
-        android:text="Buscar vuelos"
+        android:text="  Buscar vuelos  "
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_with_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638"
-    />
+        app:layout_constraintVertical_bias="0.863" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
